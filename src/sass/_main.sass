@@ -1,0 +1,30 @@
+.main
+    padding: 10px 0
+    p
+        padding-left: 10px
+        padding-right: 10px
+    &__description
+        padding-top: 10px
+        padding-bottom: 10px
+        margin-top: 10px
+        background-color: $description-color
+    &__command
+        font-weight: 700
+    &__block
+        margin-bottom: 15px
+        border-bottom: 3px solid $bootstrap-color
+.button-wrap
+    position: relative
+.copied
+    position: absolute
+    top: 0
+    left: 0
+    height: 30px
+    width: 100%
+    margin-top: -30px
+    text-align: center
+    color: $message-done
+    opacity: 0
+    transition: all 0.3s
+    &-active
+        opacity: 1

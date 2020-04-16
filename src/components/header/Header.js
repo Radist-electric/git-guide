@@ -8,7 +8,7 @@ export default class Header extends Component {
   // }
   render() {
     return (
-      <header>
+      <header ref={this.props.headerRef}>
         <Container>
             <h1>Путеводитель по Git</h1>
           <Nav />

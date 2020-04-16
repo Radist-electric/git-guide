@@ -1,8 +1,7 @@
 .main
+    min-height: 100vh
     padding: 10px 0
-    p
-        padding-left: 10px
-        padding-right: 10px
+    transition: height 0.5s
     &__description
         padding-top: 10px
         padding-bottom: 10px
@@ -13,6 +12,9 @@
     &__block
         margin-bottom: 15px
         border-bottom: 3px solid $bootstrap-color
+        p
+            padding-left: 10px
+            padding-right: 10px
 .button-wrap
     position: relative
 .copied
@@ -28,3 +30,6 @@
     transition: all 0.3s
     &-active
         opacity: 1
+
+.card
+    min-height: 100%

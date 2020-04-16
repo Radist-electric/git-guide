@@ -1,49 +1,10 @@
 import React, { Component } from 'react';
-// import { Row } from 'reactstrap';
-import Select from '../../select/Select'
+import { Row } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import MainPageTab1 from '../../../img/MainPageTab1.jpg';
+import MainPageTab2 from '../../../img/MainPageTab2.jpg';
+import MainPageTab3 from '../../../img/MainPageTab3.jpg';
 
-let gitInit = [
-  {
-    command: 'git init',
-    input: true,
-    inputPlaceholder: 'Имя папки, если требуется',
-    descWithoutInput: 'Инициализация пустого Git-репозитория в текущей папке. Создаётся скрытая папка .git со стартовым набором рабочих файлов и папок.',
-    descWithInput: 'В текущей папке создаётся новая папка с тем именем, которое введено. В ней происходит инициализация пустого Git-репозитория, т.е. создаётся скрытая папка .git со стартовым набором рабочих файлов и папок.'
-  },
-  {
-    command: 'git init --bare',
-    input: true,
-    inputPlaceholder: 'Имя репозитория, если требуется',
-    descWithoutInput: 'Создаётся „голый“ репозиторий в текущей папке. Этот новый "голый" репозитоий представляет из себя стартовый набор рабочих файлов и папок GIT.',
-    descWithInput: 'Создаётся новая папка с именем, которое введено, а внутри этой папки создаётся „голый“ репозиторий. Он представляет из себя стартовый набор рабочих файлов и папок GIT.'
-  }
-];
-let gitStatus = [
-  {
-    command: 'git status',
-    input: false,
-    descWithoutInput: 'Показывает текущее состояние репозитория.'
-  }
-]
-let gitAdd = [
-  {
-    command: 'git add',
-    input: true,
-    inputPlaceholder: 'Имя файла вместе с расширением, например main.js',
-    descWithoutInput: 'Добавляет выбранные файлы в index (индексирование выбранного файла). Подготовка файла для коммита.',
-    descWithInput: 'Добавляет конкретный файл, имя которого вы ввели, в index (индексирование выбранного файла). Подготовка файла для коммита.'
-  },
-  {
-    command: 'git add .',
-    input: false,
-    descWithoutInput: 'Добавляет в индекс изменённые и новые файлы и убирает из индекса удаленные файлы.'
-  },
-  {
-    command: 'git add -A',
-    input: false,
-    descWithoutInput: 'Добавляет все файлы и папки текущей директории в index (индексирование всех файлов).'
-  },
-]
 
 export default class MainPage extends Component {
   // constructor (props) {
@@ -51,11 +12,41 @@ export default class MainPage extends Component {
   // }
   render() {
     return (
-      <>
-        <Select data={gitInit} />
-        <Select data={gitStatus} />
-        <Select data={gitAdd} />
-      </>
+      <Row>
+        <div className="col-4">
+          <div className="card">
+            <img className="card-img-top" src={MainPageTab1} alt="Базовые команды" />
+            <div className="card-body">
+              <h5 className="card-title">Базовые команды</h5>
+              <Link to='/basic' className="btn btn-block btn-primary">Перейти</Link>
+              <p>Создаём репозиторий, индексируем файлы, делаем коммиты, запушиваем на удалённый репозиторий, делаем пулл к себе.</p>
+
+            </div>
+          </div>
+        </div>
+        <div className="col-4">
+          <div className="card">
+            <img className="card-img-top" src={MainPageTab2} alt="Работа с ветками" />
+            <div className="card-body">
+              <h5 className="card-title">Работа с ветками</h5>
+              <Link to='/branches' className="btn btn-block btn-primary">Перейти</Link>
+              <p>Создаём ветки, переключаемся между ними, выполняем слияние и устранение конфликтов.</p>
+
+            </div>
+          </div>
+        </div>
+        <div className="col-4">
+          <div className="card">
+            <img className="card-img-top" src={MainPageTab3} alt="Дополнительные команды" />
+            <div className="card-body">
+              <h5 className="card-title">Дополнительные команды</h5>
+              <Link to='/others' className="btn btn-block btn-primary">Перейти</Link>
+              <p>Многообразие команд Git даёт обширные возможности для работы. Воспользуемся ими.</p>
+
+            </div>
+          </div>
+        </div>
+      </Row>
     );
 
   }

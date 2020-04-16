@@ -7,7 +7,7 @@ export default class Footer extends Component {
   // }
   render() {
     return (
-      <footer>
+      <footer ref={this.props.footerRef}>
         <Container>
           <Row>
             <div className="col-4">

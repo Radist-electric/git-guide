@@ -56,14 +56,13 @@ let gitAdd = [
   },
 ]
 
-export default class MainPageTab1 extends Component {
+export default class Basic extends Component {
   // constructor (props) {
   //   super(props);
   // }
   render() {
     return (
       <>
-        <h1>Базовые команды</h1>
         <Select data={gitInit} />
         <Select data={gitStatus} />
         <Select data={gitAdd} />

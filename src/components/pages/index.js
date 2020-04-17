@@ -1,17 +1,25 @@
 import MainPage from './mainPage/MainPage';
-import MainPageTab1 from './mainPage/MainPageTab1';
-import MainPageTab2 from './mainPage/MainPageTab2';
-import MainPageTab3 from './mainPage/MainPageTab3';
+import CommandsPage from './commandsPage/CommandsPage';
+import Basic from './commandsPage/Basic';
+import Repository from './commandsPage/Repository';
+import Commits from './commandsPage/Commits';
+import Branches from './commandsPage/Branches';
+import Merge from './commandsPage/Merge';
 import GitPage from './gitPage/GitPage';
+import InteractivePage from './interactivePage/InteractivePage';
 import AboutPage from './aboutPage/AboutPage';
 import OtherPage from './otherPage/OtherPage';
 
 export {
     MainPage,
+    CommandsPage,
+    Basic,
+    Repository,
+    Commits,
+    Branches,
+    Merge,
+    InteractivePage,
     GitPage,
     AboutPage,
-    OtherPage,
-    MainPageTab1,
-    MainPageTab2,
-    MainPageTab3
+    OtherPage
 };

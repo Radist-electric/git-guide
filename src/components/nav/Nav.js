@@ -9,6 +9,8 @@ export default class Nav extends Component {
     return (
         <ul className="nav">
           <li className="nav-item"><Link to='/' className="nav-link">Главная</Link></li>
+          <li className="nav-item"><Link to='/commands' className="nav-link">Команды Git</Link></li>
+          <li className="nav-item"><Link to='/interactive' className="nav-link">Интерактив</Link></li>
           <li className="nav-item"><Link to='/git' className="nav-link">Про Git</Link></li>
           <li className="nav-item"><Link to='/about' className="nav-link">О проекте</Link></li>
         </ul>

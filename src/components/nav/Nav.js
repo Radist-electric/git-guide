@@ -8,11 +8,11 @@ export default class Nav extends Component {
   render() {
     return (
         <ul className="nav">
-          <li className="nav-item"><Link to='/' className="nav-link">Главная</Link></li>
-          <li className="nav-item"><Link to='/commands' className="nav-link">Команды Git</Link></li>
-          <li className="nav-item"><Link to='/interactive' className="nav-link">Интерактив</Link></li>
-          <li className="nav-item"><Link to='/git' className="nav-link">Про Git</Link></li>
-          <li className="nav-item"><Link to='/about' className="nav-link">О проекте</Link></li>
+          <li className="nav-item"><Link to='/' className="nav-link text-light">Главная</Link></li>
+          <li className="nav-item"><Link to='/commands' className="nav-link text-light">Команды Git</Link></li>
+          <li className="nav-item"><Link to='/interactive' className="nav-link text-light">Интерактив</Link></li>
+          <li className="nav-item"><Link to='/git' className="nav-link text-light">Про Git</Link></li>
+          <li className="nav-item"><Link to='/about' className="nav-link text-light">О проекте</Link></li>
         </ul>
     );
 

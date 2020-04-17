@@ -9,6 +9,9 @@ export default class Branches extends Component {
     return (
       <Row>
         <div className="col-12">
+          <h2>Работа с ветками</h2>
+        </div>
+        <div className="col-12">
           <p>Создание и удаление веток, переключение между ними.</p>
         </div>
       </Row>

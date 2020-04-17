@@ -10,7 +10,7 @@ export default class Footer extends Component {
       <footer ref={this.props.footerRef}>
         <Container>
           <Row>
-            <div className="col-4">
+            <div className="col-12">
               <ul className="list-unstyled">
                 <li><h4>2020 &#169; Путеводитель по Git</h4></li>
                 <li><p>Генерирует команды Git</p></li>

@@ -9,8 +9,11 @@ export default class AboutPage extends Component {
     return (
       <Row>
         <div className="col-12">
-          <p>Тут надо написать о том, что я вообще такое замыслил.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, voluptates! Reiciendis deserunt dignissimos fuga culpa, minima excepturi. Voluptas maxime quisquam atque qui. Neque consequatur sequi maxime explicabo velit, natus harum nam, quos dicta autem a incidunt. Placeat ducimus harum, voluptate reprehenderit, doloribus nesciunt architecto, molestiae aperiam veniam exercitationem quaerat error?</p>
+          <h1>О проекте Git Guide</h1>
+        </div>
+        <div className="col-12">
+          <p>Основная идея этого Путеводителя по Git - помочь быстро сформировать необходимую команду Git, скопировать в буфер обмена и вставить в командную строку. Это очень удобно для начинающих программистов, пока команды ещё не запомнились. В таких случаях шпаргалка - это очень удобный инструмент.</p>
+          <p>Это проект я делаю на React. На данном этапе здесь чистый фронтенд. Через какое-то время планирую подтянуть свои знания по NodeJS и начать делать серверную часть. У меня нет конкретной даты завершения проекта. По мере появления идей буду расширять и дорабатывать Путеводитель.</p>
         </div>
       </Row>
     );

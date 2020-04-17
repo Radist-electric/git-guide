@@ -9,6 +9,9 @@ export default class Commits extends Component {
     return (
       <Row>
         <div className="col-12">
+          <h2>Работа с коммитами</h2>
+        </div>
+        <div className="col-12">
           <p>Создание коммитов и работа с изменениями. Копирование коммитов, переключение между ними и история коммитов.</p>
         </div>
       </Row>

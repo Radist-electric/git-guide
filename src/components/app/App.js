@@ -12,9 +12,6 @@ export default class App extends Component {
   // }
 
   componentDidMount() {
-    console.log(this.headerElement);
-    console.log(this.footerElement);
-    console.log(this.mainElement);
     const headerHeight = this.headerElement.offsetHeight,
       footerHeight = this.footerElement.offsetHeight,
       windowHeight = window.innerHeight
@@ -22,7 +19,6 @@ export default class App extends Component {
         || document.body.clientHeight;
     this.mainElement.style.minHeight = windowHeight - headerHeight - footerHeight + "px";
   }
-
 
   render() {
     return (
@@ -43,8 +39,6 @@ export default class App extends Component {
         <Footer footerRef={el => (this.footerElement = el)} />
       </Router >
     );
-
   }
-
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import Nav from '../nav/Nav'
+import Nav from '../nav/Nav';
+import Logo from '../../img/logo.png';
 
 export default class Header extends Component {
   // constructor (props) {
@@ -10,7 +11,7 @@ export default class Header extends Component {
     return (
       <header ref={this.props.headerRef}>
         <Container>
-            <h1>Путеводитель по Git</h1>
+            <img className="logo" src={Logo} alt="logo"></img>
           <Nav />
         </Container>
       </header>

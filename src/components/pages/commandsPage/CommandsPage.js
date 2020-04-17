@@ -12,30 +12,36 @@ export default class CommandsPage extends Component {
 
     const commands = () => (
       <div>
-        <h3>Общая информация о командах GIT</h3>
+        <h4>Общая информация о командах Git</h4>
+        <p>Команды GIt можно условно разбить на разные категории. Причём одни и те же команды смело можно отнести к разным категориям. Переходите по вкладкам и вы найдёте нужные вам команды. Они могут встречаться в разных категориях.</p>
+        <p>Самые простые и ходовые команды можно найти во вкладке <Link to='/commands/basic'>Базовые</Link>. Если хотите освежить в памяти общие понятие Git, то на странице <Link to='/about'>Про Git</Link> вы найдёте нужную вам информацию.</p>
       </div>
     )
+    const { location } = this.props;
+    const currentPath = location.pathname;
 
     return (
       <>
         <Row>
-          <h2>Команды GIT</h2>
+          <div className="col-12">
+            <h1>Команды GIT</h1>
+          </div>
           <div className="col-12">
             <ul className="nav nav-tabs">
               <li className="nav-item">
-                <Link to='/commands/basic' className="nav-link">Базовые</Link>
+                <Link className={currentPath === '/commands/basic' ? 'active nav-link' : 'nav-link'} to='/commands/basic'>Базовые</Link>
               </li>
               <li className="nav-item">
-                <Link to='/commands/repository' className="nav-link">Репозиторий</Link>
+                <Link className={currentPath === '/commands/repository' ? 'active nav-link' : 'nav-link'} to='/commands/repository'>Репозиторий</Link>
               </li>
               <li className="nav-item">
-                <Link to='/commands/commits' className="nav-link">Коммиты</Link>
+                <Link className={currentPath === '/commands/commits' ? 'active nav-link' : 'nav-link'} to='/commands/commits'>Коммиты</Link>
               </li>
               <li className="nav-item">
-                <Link to='/commands/branches' className="nav-link">Ветки</Link>
+                <Link className={currentPath === '/commands/branches' ? 'active nav-link' : 'nav-link'} to='/commands/branches'>Ветки</Link>
               </li>
               <li className="nav-item">
-                <Link to='/commands/merge' className="nav-link">Слияние</Link>
+                <Link className={currentPath === '/commands/merge' ? 'active nav-link' : 'nav-link'} to='/commands/merge'>Слияние</Link>
               </li>
             </ul>
           </div>

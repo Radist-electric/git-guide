@@ -1,5 +1,5 @@
 .main
-    min-height: 100vh
+    // min-height: 100vh
     padding: 10px 0
     transition: height 0.5s
     &__description
@@ -8,32 +8,38 @@
         margin-top: 10px
         background-color: $description-color
     &__command
-        font-weight: 700
+        font-style: italic
     &__block
-        margin-bottom: 15px
-        border-bottom: 3px solid $bootstrap-color
+        margin: 20px 0
+        // border-bottom: 3px solid $bootstrap-color
         p
             padding-left: 10px
             padding-right: 10px
+        select
+            font-weight: 700
+        button
+            transition: all 0.3s
+        input, select, button
+            margin-bottom: 10px
+    a
+        display: inline-block
 .button-wrap
     position: relative
 .copied
-    position: absolute
-    top: 0
-    left: 0
-    height: 30px
-    width: 100%
-    margin-top: -30px
-    text-align: center
+    border: 1px solid $message-done
     color: $message-done
-    opacity: 0
-    transition: all 0.3s
-    &-active
-        opacity: 1
-
+    box-shadow: none !important
+    &:hover
+        background-color: $light-color
+        border: 1px solid $message-done
+        color: $message-done
 .card
     min-height: 100%
     &-body
         display: flex
         flex-direction: column
         justify-content: space-between
+        height: 240px
+
+h1
+    margin-bottom: 10px

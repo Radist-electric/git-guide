@@ -6,26 +6,32 @@ export default class Select extends Component {
         this.state = {
             selected: 0,
             str: '',
-            copied: false
+            copied: false,
+            quote: ''
         }
     }
+ 
     optionChange = (event) => {
         this.setState({
             selected: event.target.value,
-            copied: false
+            str: '',
+            copied: false,
+            quote: this.props.data[this.state.selected].quote
         });
     }
     inputChange = (event) => {
         this.setState({
             str: event.target.value.trim().replace(/ /g, '_'),
-            copied: false
+            copied: false,
+            quote: this.props.data[this.state.selected].quote
         });
     }
+    // ${this.props.data[this.state.selected].quote}
     copyText = () => {
         this.setState({
             copied: true
         });
-        navigator.clipboard.writeText(`${this.props.data[this.state.selected].command} ${this.state.str}`)
+        navigator.clipboard.writeText(`${this.props.data[this.state.selected].command} ${this.state.quote}${this.state.str}${this.state.quote}`)
             .then(() => {
                 setTimeout(() => {
                     this.setState({
@@ -39,9 +45,11 @@ export default class Select extends Component {
     }
 
     render() {
-        let copiedClass = 'copied';
+        let copiedClass = 'btn btn-block btn-outline-primary',
+            copiedText = 'Скопировать';
         if (this.state.copied) {
-            copiedClass += ' copied-active'
+            copiedClass += ' copied';
+            copiedText = 'Скопировано!';
         }
         const selects = this.props.data.map((info, index) => {
             return (
@@ -50,9 +58,11 @@ export default class Select extends Component {
         });
         const { str, selected } = this.state;
         const data = this.props.data;
+        const quote = data[selected].quote === '"' ? '"' : '';
+        console.log(quote);
         const description = str.length === 0 ? data[selected].descWithoutInput : data[selected].descWithInput;
         const input = data[selected].input ?
-            <div className="col-6">
+            <div className="col-xl-6">
                 <input
                     type="text"
                     className="form-control"
@@ -60,29 +70,32 @@ export default class Select extends Component {
                     onInput={this.inputChange} />
             </div> : null;
         return (
-            <div className="main__block">
-                <Row>
-                    <div className="col-6">
-                        <select value={selected} className="custom-select" onChange={this.optionChange}>
-                            {selects}
-                        </select>
-                    </div>
-                    {input}
-                    <div className="col-12">
-                        <p className="main__description">{description}</p>
-                        <p>Скопируйте полученную команду в буфер обмена</p>
-                    </div>
-                    <div className="col-10">
-                        <p className="form-control main__command">{data[selected].command} {str}</p>
-                    </div>
-                    <div className="col-2">
-                        <div className="button-wrap">
-                            <p className={copiedClass}>Скопировано!</p>
-                            <button className="btn btn-block btn-outline-primary" onClick={this.copyText}>Скопировать</button>
+            <>
+                <div className="main__block">
+                    <Row>
+                        <div className="col-xl-6">
+                            <select value={selected} className="custom-select" onChange={this.optionChange}>
+                                {selects}
+                            </select>
                         </div>
-                    </div>
-                </Row>
-            </div>
+                        {input}
+                        <div className="col-12">
+                            <p className="main__description">{description}</p>
+                            <p className="small mb-0">Скопируйте полученную команду в буфер обмена</p>
+                        </div>
+                        <div className="col-xl-10 col-md-9">
+                            <p className="form-control main__command">{data[selected].command} {quote}{str}{quote}</p>
+                        </div>
+                        <div className="col-xl-2 col-md-3">
+                            <div className="button-wrap">
+                                <button className={copiedClass} onClick={this.copyText}>{copiedText}</button>
+                            </div>
+                        </div>
+
+                    </Row>
+                </div>
+                <hr className="my-4" />
+            </>
         );
     }
 }

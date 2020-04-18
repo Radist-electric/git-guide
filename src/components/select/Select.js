@@ -3,35 +3,52 @@ import { Row } from 'reactstrap';
 export default class Select extends Component {
     constructor(props) {
         super(props);
+        const tempSplice = this.props.data[0].splice === true ? '' : ' ';
+        const tempQuote = this.props.data[0].quote === '"' ? '"' : '';
         this.state = {
             selected: 0,
-            str: '',
+            splice: tempSplice,
+            quote: tempQuote,
+            str: `${tempSplice}${tempQuote}${tempQuote}`,
             copied: false,
-            quote: ''
+            inputText: ''
         }
     }
- 
+
     optionChange = (event) => {
+        let inputText,
+            quote = this.props.data[event.target.value].quote === '"' ? '"' : '',
+            splice = this.props.data[event.target.value].splice === true ? '' : ' ';
+        if (this.props.data[event.target.value].input === true) {
+            inputText = this.state.inputText;
+        } else {
+            inputText = '';
+            this.setState({
+                inputText: ''
+            });
+        }
         this.setState({
             selected: event.target.value,
-            str: '',
-            copied: false,
-            quote: this.props.data[this.state.selected].quote
+            splice: splice,
+            quote: quote,
+            str: `${splice}${quote}${inputText}${quote}`,
+            copied: false
         });
     }
+
     inputChange = (event) => {
         this.setState({
-            str: event.target.value.trim().replace(/ /g, '_'),
+            inputText: `${event.target.value.trim()}`,
+            str: `${this.state.splice}${this.state.quote}${event.target.value.trim()}${this.state.quote}`,
             copied: false,
-            quote: this.props.data[this.state.selected].quote
         });
     }
-    // ${this.props.data[this.state.selected].quote}
+    // replace(/ /g, '_')
     copyText = () => {
         this.setState({
             copied: true
         });
-        navigator.clipboard.writeText(`${this.props.data[this.state.selected].command} ${this.state.quote}${this.state.str}${this.state.quote}`)
+        navigator.clipboard.writeText(`${this.props.data[this.state.selected].command}${this.state.str}`)
             .then(() => {
                 setTimeout(() => {
                     this.setState({
@@ -45,6 +62,10 @@ export default class Select extends Component {
     }
 
     render() {
+        // console.log(this.state.selected);
+        // console.log(this.state.quote);
+        // console.log(this.state.str);
+        // console.log(`"${this.state.splice}"`);
         let copiedClass = 'btn btn-block btn-outline-primary',
             copiedText = 'Скопировать';
         if (this.state.copied) {
@@ -58,9 +79,15 @@ export default class Select extends Component {
         });
         const { str, selected } = this.state;
         const data = this.props.data;
-        const quote = data[selected].quote === '"' ? '"' : '';
-        console.log(quote);
-        const description = str.length === 0 ? data[selected].descWithoutInput : data[selected].descWithInput;
+        // const quote = data[selected].quote === '"' ? '"' : '';
+        // console.log(quote);
+        // console.log(str);
+        // console.log(str.length);
+        // console.log(str.replace(/[\ \""]/g, '').length);
+        
+        // console.log(data[selected].descWithoutInput);
+        // console.log(data[selected].descWithInput);
+        const description = str.replace(/[\ \""]/g, '').length === 0 ? data[selected].descWithoutInput : data[selected].descWithInput;
         const input = data[selected].input ?
             <div className="col-xl-6">
                 <input
@@ -84,7 +111,7 @@ export default class Select extends Component {
                             <p className="small mb-0">Скопируйте полученную команду в буфер обмена</p>
                         </div>
                         <div className="col-xl-10 col-md-9">
-                            <p className="form-control main__command">{data[selected].command} {quote}{str}{quote}</p>
+                            <p className="form-control main__command">{data[selected].command}{str}</p>
                         </div>
                         <div className="col-xl-2 col-md-3">
                             <div className="button-wrap">

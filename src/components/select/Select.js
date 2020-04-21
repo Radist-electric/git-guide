@@ -43,7 +43,7 @@ export default class Select extends Component {
             copied: false,
         });
     }
-    // replace(/ /g, '_')
+
     copyText = () => {
         this.setState({
             copied: true
@@ -65,7 +65,6 @@ export default class Select extends Component {
         // console.log(this.state.selected);
         // console.log(this.state.quote);
         // console.log(this.state.str);
-        // console.log(`"${this.state.splice}"`);
         let copiedClass = 'btn btn-block btn-outline-primary',
             copiedText = 'Скопировать';
         if (this.state.copied) {
@@ -79,14 +78,6 @@ export default class Select extends Component {
         });
         const { str, selected } = this.state;
         const data = this.props.data;
-        // const quote = data[selected].quote === '"' ? '"' : '';
-        // console.log(quote);
-        // console.log(str);
-        // console.log(str.length);
-        // console.log(str.replace(/[\ \""]/g, '').length);
-        
-        // console.log(data[selected].descWithoutInput);
-        // console.log(data[selected].descWithInput);
         const description = str.replace(/[\ \""]/g, '').length === 0 ? data[selected].descWithoutInput : data[selected].descWithInput;
         const input = data[selected].input ?
             <div className="col-xl-6">
@@ -118,7 +109,6 @@ export default class Select extends Component {
                                 <button className={copiedClass} onClick={this.copyText}>{copiedText}</button>
                             </div>
                         </div>
-
                     </Row>
                 </div>
                 <hr className="my-4" />

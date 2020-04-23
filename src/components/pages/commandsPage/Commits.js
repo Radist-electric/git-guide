@@ -37,7 +37,7 @@ export default class Commits extends Component {
   render() {
     return (
       <>
-        <h2>Базовые команды</h2>
+        <h2>Работа с коммитами</h2>
         <Select data={gitCommit} />
       </>
     );

@@ -8,15 +8,11 @@ export default class Multiselect extends Component {
             selected: 0,
             str: '',
             copied: false,
-            inputs: []
+            inputs: new Array(this.props.data[0].input.length).join(".").split(".")
         }
     }
 
     inputChange = (event) => {
-        // console.log(event);
-        // console.log(event.target);
-        // console.log(event.target.value);
-        // console.log(event.target.name);
         let str = '';
         const arr = this.state.inputs.map((item, i) => {
             let curCommand = i === +event.target.name ? event.target.value.trim() : item;

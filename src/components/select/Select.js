@@ -62,9 +62,6 @@ export default class Select extends Component {
     }
 
     render() {
-        // console.log(this.state.selected);
-        // console.log(this.state.quote);
-        // console.log(this.state.str);
         let copiedClass = 'btn btn-block btn-outline-primary',
             copiedText = 'Скопировать';
         if (this.state.copied) {
@@ -78,7 +75,8 @@ export default class Select extends Component {
         });
         const { str, selected } = this.state;
         const data = this.props.data;
-        const description = str.replace(/[\ \""]/g, '').length === 0 ? data[selected].descWithoutInput : data[selected].descWithInput;
+        const description = str.replace(/\s|""/g, '').length === 0 ? data[selected].descWithoutInput : data[selected].descWithInput;
+
         const input = data[selected].input ?
             <div className="col-xl-6">
                 <input

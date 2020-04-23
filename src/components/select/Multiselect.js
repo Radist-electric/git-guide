@@ -10,48 +10,34 @@ export default class Multiselect extends Component {
             copied: false,
             inputs: []
         }
-        this.props.data[0].input.map((info) => {
-            this.state.inputs.push(info);
-        });
     }
 
     inputChange = (event) => {
-        const arr = this.state.inputs.map((name, i) => {
-            console.log(name);
-            console.log(i);
-            let elem = i == event.target.name ? name : event.target.value;
-            return {
-                elem
-            }
-        });
-        console.log(arr);
-        // console.log(this.state.inputs[event.target.name]);
         // console.log(event);
         // console.log(event.target);
         // console.log(event.target.value);
         // console.log(event.target.name);
+        let str = '';
+        const arr = this.state.inputs.map((item, i) => {
+            let curCommand = i === +event.target.name ? event.target.value.trim() : item;
+            str += ` ${curCommand}`;
+            return curCommand;
+        });
+
         this.setState({
-            // inputs[event.target.name]: event.target.value,
-            // inputText: `${event.target.value.trim()}`,
-            // str: `${this.state.splice}${this.state.quote}${event.target.value.trim()}${this.state.quote}`,
             copied: false,
+            inputs: arr,
+            str: str
         });
     }
 
     optionChange = (event) => {
-        // const inputs = this.props.data[event.target.value].input.map((info) => {
-        //     return {
-        //         info
-        //     }
-        // });
-        // let howMany = this.props.data[event.target.value].input.length;
-        // console.log(howMany);
-        let arr = new Array(this.props.data[event.target.value].input.length);
-        // const inputs = this.props.data[event.target.value].input.map(elem => '');
+        let arr = new Array(this.props.data[event.target.value].input.length).join(".").split(".");
         this.setState({
             selected: event.target.value,
             copied: false,
-            inputs: arr
+            inputs: arr,
+            str: ''
         });
     };
 
@@ -74,25 +60,20 @@ export default class Multiselect extends Component {
 
 
     render() {
-        // this.state.inputs.map((info, index) => {
-        //     console.log(this.state.inputs[index]);
-        // });
-        // console.log(this.state.inputs[0]);
-        // console.log(this.state.inputs);
         let copiedClass = '',
             copiedText = 'Скопировать';
         if (this.state.copied) {
             copiedClass = 'copied';
             copiedText = 'Скопировано!';
         }
-        const { str, selected } = this.state;
+        const { str, selected, inputs } = this.state;
         const data = this.props.data;
-        const options = this.props.data.map((info, index) => {
+        const options = data.map((info, index) => {
             return (
                 <option value={index} key={index}>{info.command}</option>
             )
         });
-        const inputs = this.props.data[selected].input.map((info, index) => {
+        const showInputs = data[selected].input.map((info, index) => {
             return (
                 <Col xl="6" key={index}>
                     <Input
@@ -102,7 +83,10 @@ export default class Multiselect extends Component {
                 </Col>
             )
         });
-        const description = data[selected].description;
+        let description = data[selected].description;
+        for (let i = 0; i < inputs.length; i++) {
+            description = description.replace("[input]", `"${inputs[i]}"`);
+        }
 
         return (
             <>
@@ -113,7 +97,7 @@ export default class Multiselect extends Component {
                                 {options}
                             </select>
                         </Col>
-                        {inputs}
+                        {showInputs}
                         <Col xs="12">
                             <p className="main__description">{description}</p>
                             <p className="small mb-0">Скопируйте полученную команду в буфер обмена</p>

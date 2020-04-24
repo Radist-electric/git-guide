@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Row } from 'reactstrap';
 import Select from '../../select/Select';
 import Multiselect from '../../select/Multiselect';
 
@@ -35,7 +34,7 @@ let gitRemote = [
     input: [
       'Имя репозитория'
     ],
-    description: 'Получить данные об удалённом репозитории с сокращённым именем [input], который Вы ввели.'
+    description: 'Получить данные об удалённом репозитории с сокращённым именем [input], которое Вы ввели.'
   },
   {
     command: 'git remote add',
@@ -63,7 +62,27 @@ let gitPush = [
     ],
     description: 'Отправляет данные текущей ветви локального репозитория в удалённый репозиторий. Дополнительно можете указать имя [input] удалённого репозитория и его ветку [input]. Если удалённая ветка не установлена как отслеживаемая, то сделать её такой.'
   }
-]
+];
+let gitClone = [
+  {
+    command: 'git clone',
+    input: [
+      'URL репозитория',
+      'Имя папки'
+    ],
+    description: 'Клонировать к себе удалённый репозиторий, расположенный по указанному адресу [input]. Если имя папки не указано, то клонирование происходит в одноимённую директорию. В противном случае клонирование выполнится в папку с именем [input], которое Вы указали.'
+  }
+];
+let gitPull = [
+  {
+    command: 'git pull',
+    input: [
+      'Имя репозитория',
+      'Имя ветки'
+    ],
+    description: 'Притянуть (залить) к себе историю и изменения с удалённого репозитория и произвести слияние. Если не указывать параметры, то слияние происходит с репозиторием и веткой, выбранными по умолчанию. Заполните поля ввода и получите команду слияния с удалённым репозиторием [input] с веткой [input].'
+  }
+];
 
 
 export default class Repository extends Component {
@@ -77,6 +96,8 @@ export default class Repository extends Component {
         <Select data={gitInit} />
         <Multiselect data={gitRemote} />
         <Multiselect data={gitPush} />
+        <Multiselect data={gitClone} />
+        <Multiselect data={gitPull} />
       </>
     );
   }

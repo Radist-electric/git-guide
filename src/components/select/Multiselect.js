@@ -12,6 +12,27 @@ export default class Multiselect extends Component {
         }
     }
 
+    optionChange = (event) => {
+        let str = '';
+        // Create a new array of inputs with a length equal to the number of input fields
+        let arr = new Array(this.props.data[event.target.value].input.length).join(".").split(".");
+        // It's necessary to add value from the previous array of inputs
+         for (let i = 0; i < arr.length; i++) {
+            if (this.state.inputs[i] === undefined) {
+                arr[i] = '';
+            } else {
+                arr[i] = this.state.inputs[i];
+                str = str + ` ${this.state.inputs[i]}`
+            }
+        }
+        this.setState({
+            selected: event.target.value,
+            copied: false,
+            inputs: arr,
+            str: str
+        });
+    };
+
     inputChange = (event) => {
         let str = '';
         const arr = this.state.inputs.map((item, i) => {
@@ -27,21 +48,11 @@ export default class Multiselect extends Component {
         });
     }
 
-    optionChange = (event) => {
-        let arr = new Array(this.props.data[event.target.value].input.length).join(".").split(".");
-        this.setState({
-            selected: event.target.value,
-            copied: false,
-            inputs: arr,
-            str: ''
-        });
-    };
-
     copyText = () => {
         this.setState({
             copied: true
         });
-        navigator.clipboard.writeText(`${this.props.data[this.state.selected].command}${this.state.str}`)
+        navigator.clipboard.writeText(`${this.props.data[this.state.selected].command.replace(/\[([^\]]*)\]/g, '').trim()}${this.state.str}`)
             .then(() => {
                 setTimeout(() => {
                     this.setState({
@@ -99,7 +110,7 @@ export default class Multiselect extends Component {
                             <p className="small mb-0">Скопируйте полученную команду в буфер обмена</p>
                         </Col>
                         <Col xl="10" md="9">
-                            <p className="form-control main__command">{data[selected].command}{str}</p>
+                            <p className="form-control main__command">{data[selected].command.replace(/\[([^\]]*)\]/g, '').trim()}{str}</p>
                         </Col>
                         <Col xl="2" md="3">
                             <Button outline block color="primary" className={copiedClass} onClick={this.copyText}>{copiedText}</Button>

@@ -21,6 +21,7 @@ export default class App extends Component {
   }
 
   render() {
+
     return (
       <Router>
         <Header headerRef={el => (this.headerElement = el)} />

@@ -6,8 +6,9 @@ export default class Nav extends Component {
   //   super(props);
   // }
   render() {
+    const ulClass = this.props.burger === true ? 'nav nav-mobile' : 'nav nav-mobile nav-mobile-show';
     return (
-      <ul className="nav nav-mobile">
+      <ul className={ulClass}>
         <li className="nav-item"><Link to='/' className="nav-link text-light">Главная</Link></li>
         <li className="nav-item"><Link to='/commands' className="nav-link text-light">Команды Git</Link></li>
         <li className="nav-item"><Link to='/interactive' className="nav-link text-light">Интерактив</Link></li>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { Row } from 'reactstrap';
 import Select from '../../select/Select'
+import Multiselect from '../../select/Multiselect';
 
 let gitCommit = [
   {
@@ -30,6 +31,16 @@ let gitCommit = [
     descWithInput: 'Перед выполнение коммита будут занесены в индекс все отслеживаемые файлы. Новые файлы не индексируются. Текстовый комментарий, который Вы написали, будет добавлен в команду. Далее проиндексированные изменения записываются в репозиторий.'
   }
 ];
+let gitReset = [
+  {
+    command: 'git reset --hard [commit]',
+    input: [
+      'Хэш коммита, например, 92c68f9...'
+    ],
+    description: 'Принудительно возвращает к указанному коммиту [input], не сохраняя историю и изменения.'
+  }
+];
+
 export default class Commits extends Component {
   // constructor (props) {
   //   super(props);
@@ -39,6 +50,7 @@ export default class Commits extends Component {
       <>
         <h2>Работа с коммитами</h2>
         <Select data={gitCommit} />
+        <Multiselect data={gitReset} />
       </>
     );
 

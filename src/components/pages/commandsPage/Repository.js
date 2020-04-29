@@ -107,7 +107,7 @@ const Repository = () => {
         <Multiselect data={gitClone} />
         <Multiselect data={gitPull} />
   </>
-  );
+  )
 }
 
 export default Repository;

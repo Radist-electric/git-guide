@@ -100,7 +100,7 @@ const Basic = () => {
         <Select data={gitAdd} />
         <Select data={gitCommit} />
     </>
-  );
+  )
 }
 
 export default Basic;

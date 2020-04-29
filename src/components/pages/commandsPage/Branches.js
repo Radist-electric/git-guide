@@ -58,7 +58,7 @@ const Branches = () => {
     <Multiselect data={gitBranch} />
     <Multiselect data={gitCheckout} />
   </>
-  );
+  )
 }
 
 export default Branches;

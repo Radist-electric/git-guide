@@ -1,20 +1,14 @@
-import React, { Component } from 'react';
-import { Row } from 'reactstrap';
+import React from 'react';
+import { Col, Row } from 'reactstrap';
 
-export default class OtherPage extends Component {
-  // constructor (props) {
-  //   super(props);
-  // }
-  render() {
-    return (
-      <Row>
-        <div className="col-12">
-          <p>Error 404</p>
-          <p>Page isn't found</p>
-        </div>
-      </Row>
-    );
-
-  }
-
+const OtherPage = () => {
+  return (
+    <Row>
+      <Col xl="12">
+        <p>Error 404</p>
+        <p>Page isn't found</p>
+      </Col>
+    </Row>
+  )
 }
+export default OtherPage;

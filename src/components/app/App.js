@@ -7,10 +7,6 @@ import Footer from '../footer/Footer';
 import '../../sass/style.sass';
 
 export default class App extends Component {
-  // constructor (props) {
-  //   super(props);
-  // }
-
   componentDidMount() {
     const headerHeight = this.headerElement.offsetHeight,
       footerHeight = this.footerElement.offsetHeight,
@@ -21,7 +17,6 @@ export default class App extends Component {
   }
 
   render() {
-
     return (
       <Router>
         <Header headerRef={el => (this.headerElement = el)} />
@@ -39,7 +34,7 @@ export default class App extends Component {
         </main>
         <Footer footerRef={el => (this.footerElement = el)} />
       </Router >
-    );
+    )
   }
 }
 

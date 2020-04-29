@@ -28,7 +28,7 @@ const Merge = () => {
         <h2>Устранение конфликтов</h2>
         <Multiselect data={gitMerge} />
     </>
-  );
+  )
 }
 
 export default Merge;

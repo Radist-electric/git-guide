@@ -49,7 +49,7 @@ const Commits = () => {
       <Select data={gitCommit} />
       <Multiselect data={gitReset} />
     </>
-  );
+  )
 }
 
 export default Commits;

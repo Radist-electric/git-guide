@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Multiselect from '../../select/Multiselect';
 
 let gitMerge = [
@@ -22,19 +22,13 @@ let gitMerge = [
 ];
 
 
-export default class Merge extends Component {
-  // constructor (props) {
-  //   super(props);
-  // }
-  render() {
-    return (
-      <>
+const Merge = () => {
+  return (
+    <>
         <h2>Устранение конфликтов</h2>
         <Multiselect data={gitMerge} />
-      </>
-    );
-
-  }
-
+    </>
+  );
 }
 
+export default Merge;

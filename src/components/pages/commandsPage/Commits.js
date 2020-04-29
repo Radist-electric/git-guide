@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import { Row } from 'reactstrap';
 import Select from '../../select/Select'
 import Multiselect from '../../select/Multiselect';
@@ -41,20 +41,15 @@ let gitReset = [
   }
 ];
 
-export default class Commits extends Component {
-  // constructor (props) {
-  //   super(props);
-  // }
-  render() {
-    return (
-      <>
-        <h2>Работа с коммитами</h2>
-        <Select data={gitCommit} />
-        <Multiselect data={gitReset} />
-      </>
-    );
 
-  }
-
+const Commits = () => {
+  return (
+    <>
+      <h2>Работа с коммитами</h2>
+      <Select data={gitCommit} />
+      <Multiselect data={gitReset} />
+    </>
+  );
 }
 
+export default Commits;

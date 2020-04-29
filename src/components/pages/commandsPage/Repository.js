@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Select from '../../select/Select';
 import Multiselect from '../../select/Multiselect';
 
@@ -97,21 +97,17 @@ let gitPull = [
 ];
 
 
-export default class Repository extends Component {
-  // constructor (props) {
-  //   super(props);
-  // }
-  render() {
-    return (
-      <>
+const Repository = () => {
+  return (
+    <>
         <h2>Работа с репозиторием</h2>
         <Select data={gitInit} />
         <Multiselect data={gitRemote} />
         <Multiselect data={gitPush} />
         <Multiselect data={gitClone} />
         <Multiselect data={gitPull} />
-      </>
-    );
-  }
+  </>
+  );
 }
 
+export default Repository;

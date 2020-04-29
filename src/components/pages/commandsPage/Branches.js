@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Multiselect from '../../select/Multiselect';
 
 let gitBranch = [
@@ -50,21 +50,15 @@ let gitCheckout = [
   }
 ];
 
-export default class Branches extends Component {
-  // constructor (props) {
-  //   super(props);
-  // }
- 
-  render() {
-    return (
-      <>
-        <h2>Работа с ветками</h2>
-        <Multiselect data={gitBranch} />
-        <Multiselect data={gitCheckout} />
-      </>
-    );
 
-  }
-
+const Branches = () => {
+  return (
+    <>
+    <h2>Работа с ветками</h2>
+    <Multiselect data={gitBranch} />
+    <Multiselect data={gitCheckout} />
+  </>
+  );
 }
 
+export default Branches;

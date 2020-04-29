@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Select from '../../select/Select'
 
 let gitInit = [
@@ -90,20 +90,17 @@ let gitCommit = [
   }
 ];
 
-export default class Basic extends Component {
-  // constructor (props) {
-  //   super(props);
-  // }
-  render() {
-    return (
-      <>
+
+const Basic = () => {
+  return (
+    <>
         <h2>Базовые команды</h2>
         <Select data={gitInit} />
         <Select data={gitStatus} />
         <Select data={gitAdd} />
         <Select data={gitCommit} />
-      </>
-    );
-  }
+    </>
+  );
 }
 
+export default Basic;

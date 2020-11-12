@@ -5,8 +5,8 @@ const OtherPage = () => {
   return (
     <Row>
       <Col xl="12">
-        <p>Error 404</p>
-        <p>Page isn't found</p>
+        <p>Ошибка 404</p>
+        <p>Страница не найдена</p>
       </Col>
     </Row>
   )

@@ -33,7 +33,7 @@ export default class App extends Component {
           </Container>
         </main>
         <Footer footerRef={el => (this.footerElement = el)} />
-      </Router >
+      </Router>
     )
   }
 }

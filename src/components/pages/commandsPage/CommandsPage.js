@@ -48,7 +48,7 @@ const CommandsPage = (props) => {
 
   const getdata = useCallback(async () => {
     try {
-      const preResult = await fetch('http://localhost:3002/commands')
+      const preResult = await fetch('https://git-guide-server.herokuapp.com/commands')
       const result = await preResult.json()
       setdata(result)
       setLoading(false)
